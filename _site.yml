@@ -1,0 +1,47 @@
+name: "cookbook"
+output_dir: "."
+navbar:
+  title: "Cookbook"
+  type: inverse
+  left:
+    - text: "Home"
+      href: index.html
+      icon: ion-erlenmeyer-flask
+    - text: "About"
+      icon: fa-info
+      href: about.html
+    - text: "Git"
+      href: git.html
+      icon: fa-git-square
+    - text: "Linux"
+      icon: ion-social-tux
+      menu:
+        - text: "Text"
+        - text: "Find"
+          href: find.html
+        - text: "Rename"
+          href: rename.html
+        - text: "---------"
+        - text: "Compiling"
+    - text: "RStats"
+      href: rstats.html
+      icon: fa-language
+      menu:
+        - text: "Data Wrangling"
+          href: rstats_data-wrangling.html
+          icon: fa-puzzle-piece
+        - text: "Plotting"
+          href: rstats_plotting.html
+          icon: fa-bar-chart
+    - text: "More"
+      icon: fa-gear
+      menu:
+        - text: "Miscellaneous"
+          href: page_a.html
+output:
+  html_document:
+    theme: readable
+    highlight: tango
+    include:
+      after_body: footer.html
+    css: styles.css

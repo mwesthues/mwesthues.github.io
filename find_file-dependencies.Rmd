@@ -1,0 +1,21 @@
+---
+title: "Find File Dependencies"
+---
+
+Assume that we have a directory tree filled with `R`-files.
+We have reasonably numbered all files so that we know the order of file 
+execution.
+However, we have found out that there are some interdependencies between 
+directories, which we have to know about in order to let users know the exact 
+order of execution.
+
+In this example, we have our `project`-directory and all relevant `R`-scripts 
+are stored two levels deep into the file system. 
+We will check for cross-dependencies by checking for all content-loading 
+commands.
+Finally, we will sort the original directory structure and save the output in 
+`dependencies.txt`.
+
+```{r, tidy = FALSE, eval = FALSE}
+find /path/to/project -maxdepth 2 -type f -name '*.R' | xargs grep -Rnw -e "readRDS" -e "source" -e "read.table" -e "scan" -e "fread" -e "read_delim" | sort -o dependencies.txt
+```

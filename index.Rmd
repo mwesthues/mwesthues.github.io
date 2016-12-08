@@ -1,0 +1,22 @@
+---
+title: "Cookbook"
+---
+
+This website is a "Cookbook" with code snippets that help me frequently 
+throughout my data analysis work.
+Currently, most "recipes" are related to short Linux commands that help me 
+filtering and sorting files.
+Additionally, I have included some aspects of Git, that I don't need on a daily
+basis, but encounter every once in a while.
+The chapter on actual data analyses based on the [R language](https://www.r-project.org/) is currently empty, but I sincerely hope
+to extend it to cover a large variety of topics beginning with reading data, 
+wrangling with data and exploring data.
+
+<div class="alert alert-warning">
+  <strong>Warning!</strong> There is no warranty that these recipes work as 
+  intended.
+</div>
+
+<!--
+![buzzfeed.com](https://img.buzzfeed.com/buzzfeed-static/static/2014-10/26/6/enhanced/webdr08/enhanced-14836-1414320930-8.jpg)
+-->

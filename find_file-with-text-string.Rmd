@@ -1,0 +1,22 @@
+---
+title: "Find Files With Text String"
+---
+
+Search for 'string' inside '/path/to/directory', but only consider files that either have ".r" or ".R" as a suffix. 
+```{r, tidy = FALSE, eval = FALSE}
+# Display the names of files that contain the string as well as the lines of string matches inside those files.
+grep --include=\*.{R,r} -Rnw '/path/to/directory/' -e "string"
+
+# Alternative (could be parallelized):
+find . -type f --regex '.*\(R\|r\)$' | xargs grep -Rnw -e "string"
+
+# Only display the names of files that contain the string.
+grep --include=\*.{R,r} -Rwl '/path/to/directory/' -e "string"
+```
+
+Search for 'string' inside '/path/to/directory', but only consider files that do not have ".docx" or ".txt" as a suffix. 
+```{r, tidy = FALSE, eval = FALSE}
+grep --exclude=\*.{docx,txt} -Rnw '/path/to/directory/' -e "string"
+```
+
+http://stackoverflow.com/a/16957078/2323832

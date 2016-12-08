@@ -1,0 +1,11 @@
+Rmarkdown options:
+
+```{r setup, message = FALSE, echo = FALSE}
+knitr::knit_hooks$set(inline = function(x) {
+  prettyNum(x, big.mark = ",", digits = 2)
+})
+knitr::opts_chunk$set(fig.width = 8, fig.height = 6,
+                      warning = FALSE,
+                      echo = TRUE,
+                      tidy = FALSE)
+```

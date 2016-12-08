@@ -1,0 +1,10 @@
+---
+title: "List Files From Identically Named Subdirectories"
+---
+
+Display all files stored in subdirectory '_results', irrespective of the parent 
+directory.
+
+```{r, tidy = FALSE, eval = FALSE}
+find -path "*/_results/"
+```

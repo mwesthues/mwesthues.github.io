@@ -1,0 +1,10 @@
+---
+title: "Recently Changed"
+---
+
+Display all files, which were changed within the last two days and are two 
+levels down from the current directory in reverse order.
+
+```{r, tidy = FALSE, eval = FALSE}
+find /path/to/directory -mindepth 2 -maxdepth 2 -type f -ctime 2 -exec ls -lhtr {} +
+```

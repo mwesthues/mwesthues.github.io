@@ -1,0 +1,13 @@
+---
+title: "Rename Files"
+---
+
+```{r, tidy = FALSE, eval = FALSE}
+mkdir ~/playground
+cd ~/playground
+touch frog{0..9}.txt
+touch bull_frog{0..9}.txt
+# Substitute "frog" with "horn"
+find . -type f -mindepth 1 -maxdepth 1 -name 'bull*' -exec rename 's/frog/horn/' *.txt {} +
+```
+http://unix.stackexchange.com/a/177716

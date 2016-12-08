@@ -1,0 +1,11 @@
+---
+title: "Modified Within Time Range"
+---
+
+Display all files that were modified within a certain time range.
+Show all files in the top layer of the directory `my_dir` whose name contains 
+`dummy` and which were modified between `2016-03-15` and `2016-04-01`.
+
+```{r, tidy = FALSE, eval = FALSE}
+find /path/to/my_dir -maxdepth 1 -type f \( -newermt "mar 15, 2016" -not -newermt "apr 01, 2016" -name "*dummy*" \) -print0
+```
