@@ -21,6 +21,14 @@ navbar:
           href: find.html
         - text: "Rename"
           href: rename.html
+        - text: "Regular Expressions"
+          href: regex.html
+        - text: "---------"
+        - text: "File Transfer"
+        - text: "rsync"
+          href: rsync.html
+        - text: "tar"
+          href: tar.html
         - text: "---------"
         - text: "Compiling"
     - text: "RStats"

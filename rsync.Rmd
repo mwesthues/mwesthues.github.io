@@ -1,0 +1,50 @@
+---
+title: "File transfer using 'rsync'"
+---
+
+1.   The general layout of any `rsync` command is as follows:
+```{r, tidy = FALSE, eval = FALSE}
+rsync [OPTION] SRC DEST
+```
+where `SRC` is the source to copy from and `DEST` is the receiving location of 
+the files sent from `SRC`.
+
+2.   Check what will happen first
+Always make sure to conduct a dry run before actually running `rsync` by appending the command with the `-n`
+(i.e. `--dry-run``) flag:
+```{r, tidy = FALSE, eval = FALSE}
+rsync -avv --dry-run SRC DEST
+```
+
+3.   Copy only existing files and only if newer than target
+```{r, tidy = FALSE, eval = FALSE}
+rsync -avv --dry-run --update --existing src/ dest
+```
+[source](http://unix.stackexchange.com/a/117193)
+
+4.   Copy only files from `src` itself, but from none of its child directories
+```{r, tidy = FALSE, eval = FALSE}
+rsync -avv --dry-run -f '- /*/' src/ dest
+```
+[source](http://superuser.com/a/436079)
+
+5.   Compress files when using rsync
+```{r, tidy = FALSE, eval = FALSE}
+rsync -z src/ dest
+```
+
+6.   Using rsync over a Network
+```{r, tidy = FALSE, eval = FALSE}
+rsync -avv --rsh=ssh src/ remote-sys:/dest
+```
+where `remote-sys` could for example be `user@remote.edu`.
+
+
+7.   Synchronize between bwunicluster and bwfilestorage
+```{r, tidy = FALSE, eval = FALSE}
+# 1. Move into the source directory.
+cd <source_dir>
+
+# 2. Send the files to the destination directory.
+rdata "rsync . $BWFILESTORAGE/<dest_directory/>"### Basic Command
+```

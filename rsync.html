@@ -11,7 +11,7 @@
 
 
 
-<title>Plotting</title>
+<title>File transfer using rsync</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,8 +19,53 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+<link href="site_libs/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" />
 
 
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code > span.dt { color: #204a87; } /* DataType */
+code > span.dv { color: #0000cf; } /* DecVal */
+code > span.bn { color: #0000cf; } /* BaseN */
+code > span.fl { color: #0000cf; } /* Float */
+code > span.ch { color: #4e9a06; } /* Char */
+code > span.st { color: #4e9a06; } /* String */
+code > span.co { color: #8f5902; font-style: italic; } /* Comment */
+code > span.ot { color: #8f5902; } /* Other */
+code > span.al { color: #ef2929; } /* Alert */
+code > span.fu { color: #000000; } /* Function */
+code > span.er { color: #a40000; font-weight: bold; } /* Error */
+code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #000000; } /* SpecialChar */
+code > span.vs { color: #4e9a06; } /* VerbatimString */
+code > span.ss { color: #4e9a06; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #000000; } /* Variable */
+code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code > span.ex { } /* Extension */
+code > span.at { color: #c4a000; } /* Attribute */
+code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
 
 
 <style type="text/css">
@@ -264,12 +309,47 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Plotting</h1>
+<h1 class="title toc-ignore">File transfer using ‘rsync’</h1>
 
 </div>
 
 
-<p>Fill with lots of <code>ggplot2</code> examples.</p>
+<ol style="list-style-type: decimal">
+<li>The general layout of any <code>rsync</code> command is as follows:</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rsync [OPTION] SRC DEST</code></pre></div>
+<p>where <code>SRC</code> is the source to copy from and <code>DEST</code> is the receiving location of the files sent from <code>SRC</code>.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Check what will happen first Always make sure to conduct a dry run before actually running <code>rsync</code> by appending the command with the <code>-n</code> (i.e. `–dry-run``) flag:</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rsync -avv --dry-run SRC DEST</code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>Copy only existing files and only if newer than target</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rsync -avv --dry-run --update --existing src/<span class="st"> </span>dest</code></pre></div>
+<p><a href="http://unix.stackexchange.com/a/117193">source</a></p>
+<ol start="4" style="list-style-type: decimal">
+<li>Copy only files from <code>src</code> itself, but from none of its child directories</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rsync -avv --dry-run -f <span class="st">&#39;- /*/&#39;</span> src/<span class="st"> </span>dest</code></pre></div>
+<p><a href="http://superuser.com/a/436079">source</a></p>
+<ol start="5" style="list-style-type: decimal">
+<li>Compress files when using rsync</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rsync -z src/<span class="st"> </span>dest</code></pre></div>
+<ol start="6" style="list-style-type: decimal">
+<li>Using rsync over a Network</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rsync -avv --rsh=ssh src/<span class="st"> </span>remote-sys:<span class="er">/</span>dest</code></pre></div>
+<p>where <code>remote-sys</code> could for example be <code>user@remote.edu</code>.</p>
+<ol start="7" style="list-style-type: decimal">
+<li>Synchronize between bwunicluster and bwfilestorage</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 1. Move into the source directory.</span>
+cd &lt;source_dir&gt;
+
+<span class="co"># 2. Send the files to the destination directory.</span>
+rdata <span class="st">&quot;rsync . $BWFILESTORAGE/&lt;dest_directory/&gt;&quot;</span>### Basic Command</code></pre></div>
 
 <p>Matthias Westhues, 2016</p>
 

@@ -20,3 +20,9 @@ wrangling with data and exploring data.
 <!--
 ![buzzfeed.com](https://img.buzzfeed.com/buzzfeed-static/static/2014-10/26/6/enhanced/webdr08/enhanced-14836-1414320930-8.jpg)
 -->
+
+## Linux
+Whenever I'm struggling with the various shell commands and their corresponding 
+flags, I'll give http://explainshell.com/ a go, which is capable of explaining 
+probably most of your questions.
+Otherwise, check the detailed `man` pages as usual.
