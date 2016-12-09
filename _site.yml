@@ -11,8 +11,18 @@ navbar:
       icon: fa-info
       href: about.html
     - text: "Git"
-      href: git.html
       icon: fa-git-square
+      menu:
+        - text: "History/Diff"
+          href: git_history-diff.html
+        - text: "Add/Commit/Remove"
+          href: git_add-commit-remove.html
+        - text: "Remotes"
+          href: git_remotes.html
+        - text: "Branches"
+          href: git_branches.html
+        - text: "3-Way-Merge"
+          href: git_three-way-merge.html
     - text: "Linux"
       icon: ion-social-tux
       menu:

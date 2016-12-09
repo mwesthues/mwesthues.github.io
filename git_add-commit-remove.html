@@ -11,7 +11,7 @@
 
 
 
-<title>Rename</title>
+<title>Add/Commit/Remove</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -294,14 +294,45 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Rename</h1>
+<h1 class="title toc-ignore">Add/Commit/Remove</h1>
 
 </div>
 
 
-<ul>
-<li><a href="rename_rename-files.html">Rename Files</a></li>
-</ul>
+<div id="git-add" class="section level3">
+<h3>git-add</h3>
+<div id="add-all-untracked-files-to-the-staging-area" class="section level4">
+<h4>add all untracked files to the staging area</h4>
+<pre><code>echo -e &quot;a\n*\nq\n&quot; | git add -i</code></pre>
+<p><a href="http://stackoverflow.com/a/7446711/2323832" class="uri">http://stackoverflow.com/a/7446711/2323832</a></p>
+</div>
+<div id="remove-all-staged-files-from-the-staging-area" class="section level4">
+<h4>remove all staged files from the staging area</h4>
+<pre><code>git reset HEAD</code></pre>
+</div>
+<div id="add-only-modified-files-to-the-staging-area" class="section level4">
+<h4>add only modified files to the staging area</h4>
+<pre><code>git add `git status | grep modified | sed &#39;s/\(.*modified:\s*\)//&#39;`</code></pre>
+<p><a href="http://stackoverflow.com/a/22437750/2323832" class="uri">http://stackoverflow.com/a/22437750/2323832</a></p>
+</div>
+<div id="remove-a-particular-file-from-the-staging-area" class="section level4">
+<h4>remove a particular file from the staging area</h4>
+<pre><code>git reset HEAD &lt;filename&gt;</code></pre>
+</div>
+</div>
+<div id="git-rm" class="section level3">
+<h3>git-rm</h3>
+<div id="add-all-deleted-files-to-the-staging-area" class="section level4">
+<h4>Add all deleted files to the staging area</h4>
+<pre><code>git rm `git status | grep deleted | awk &#39;{print $3}&#39;`</code></pre>
+<p><a href="http://tylerfrankenstein.com/code/how-git-rm-all-deleted-files-shown-git-status" class="uri">http://tylerfrankenstein.com/code/how-git-rm-all-deleted-files-shown-git-status</a></p>
+</div>
+</div>
+<div id="undo-a-commit-that-has-not-been-pushed-to-the-remote-yet" class="section level3">
+<h3>Undo a commit that has not been pushed to the remote, yet</h3>
+<pre><code>git reset --soft HEAD^</code></pre>
+<p><a href="http://stackoverflow.com/a/2941598/2323832" class="uri">http://stackoverflow.com/a/2941598/2323832</a></p>
+</div>
 
 <p>Matthias Westhues, 2016</p>
 

@@ -11,7 +11,7 @@
 
 
 
-<title>Rename</title>
+<title>History/Diff</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -294,14 +294,51 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Rename</h1>
+<h1 class="title toc-ignore">History/Diff</h1>
 
 </div>
 
 
-<ul>
-<li><a href="rename_rename-files.html">Rename Files</a></li>
-</ul>
+<div id="commit-history" class="section level3">
+<h3>Commit history</h3>
+<p>Get the commit history for a single branch</p>
+<pre><code>git log branchA..</code></pre>
+<p>Get the commit history for a single file</p>
+<pre><code>git log -- [/path/to/file]</code></pre>
+</div>
+<div id="branch-comparison" class="section level3">
+<h3>Branch comparison</h3>
+<div id="compare-commits-between-two-branches." class="section level4">
+<h4>Compare commits between two branches.</h4>
+<p>The following code will answer the question, which commits have been made on <code>branchB</code> that are not yet part of <code>branchA</code>.</p>
+<pre><code>git log --oneline branchA..branchB</code></pre>
+</div>
+<div id="compare-contents-between-two-branches." class="section level4">
+<h4>Compare contents between two branches.</h4>
+<p>The following code will answer the question, which changes have been made on <code>branchB</code> compared to <code>branchA</code>.</p>
+<pre><code>git diff branchA..branchB</code></pre>
+</div>
+</div>
+<div id="see-which-files-were-part-of-a-particular-commit" class="section level3">
+<h3>See which files were part of a particular commit</h3>
+<pre><code>git diff-tree --no-commit-id --name-status -r &lt;commit-id&gt;</code></pre>
+</div>
+<div id="diff-between-files-from-different-commits" class="section level3">
+<h3>Diff between files from different commits</h3>
+<pre><code># Set-up git as your merge tool
+git config --global merge.tool vimdiff
+git config --global diff.tool vimdiff
+git config --global merge.conflictstyle diff3
+git config --global mergetool.prompt false
+
+# Run a vimdiff on two files from different commits
+git difftool &lt;sha-id&gt;:/path/to/file &lt;sha-id&gt;:/path/to/file</code></pre>
+</div>
+<div id="display-a-file-from-an-old-commit-with-the-text-editor-of-your-choice" class="section level3">
+<h3>Display a file from an old commit with the text editor of your choice</h3>
+<pre><code># Note the dash at the end of the command, which is required
+git show &lt;sha-id&gt; | &lt;text-editor&gt; -</code></pre>
+</div>
 
 <p>Matthias Westhues, 2016</p>
 
