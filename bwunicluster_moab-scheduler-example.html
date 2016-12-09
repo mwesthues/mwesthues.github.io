@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Example for a MOAB scheduler job script.</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/readable.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 66px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 71px;
+  margin-top: -71px;
+}
+
+.section h2 {
+  padding-top: 71px;
+  margin-top: -71px;
+}
+.section h3 {
+  padding-top: 71px;
+  margin-top: -71px;
+}
+.section h4 {
+  padding-top: 71px;
+  margin-top: -71px;
+}
+.section h5 {
+  padding-top: 71px;
+  margin-top: -71px;
+}
+.section h6 {
+  padding-top: 71px;
+  margin-top: -71px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Cookbook</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="ion ion-erlenmeyer-flask"></span>
+     
+    Home
+  </a>
+</li>
+<li>
+  <a href="about.html">
+    <span class="fa fa-info"></span>
+     
+    About
+  </a>
+</li>
+<li>
+  <a href="git.html">
+    <span class="fa fa-git-square"></span>
+     
+    Git
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="ion ion-social-tux"></span>
+     
+    Linux
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="shell_command-intro.html">Shell Command Introduction</a>
+    </li>
+    <li class="dropdown-header">Text</li>
+    <li>
+      <a href="find.html">Find</a>
+    </li>
+    <li>
+      <a href="rename.html">Rename</a>
+    </li>
+    <li>
+      <a href="regex.html">Regular Expressions</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">File Transfer</li>
+    <li>
+      <a href="rsync.html">rsync</a>
+    </li>
+    <li>
+      <a href="tar.html">tar</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Compiling</li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-language"></span>
+     
+    RStats
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="rstats_data-wrangling.html">
+        <span class="fa fa-puzzle-piece"></span>
+         
+        Data Wrangling
+      </a>
+    </li>
+    <li>
+      <a href="rstats_plotting.html">
+        <span class="fa fa-bar-chart"></span>
+         
+        Plotting
+      </a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="bwunicluster.html">
+    <span class="fa fa-server"></span>
+     
+    bwUniCluster
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-gear"></span>
+     
+    More
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="miscellaneous.html">Miscellaneous</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Example for a MOAB scheduler job script.</h1>
+
+</div>
+
+
+<p>This document is a step-by-step instruction on setting up a MOAB job scheduler script. The shell script itself can be found <a href="bwunicluster_mclapply.sh">here</a> in case you want to run it yourself.</p>
+<div id="step-by-step-set-up-description" class="section level2">
+<h2>Step-by-step set-up description</h2>
+<p>The first line is required in order to tell the program interpreter that this file is a shell script.</p>
+<pre><code>#!/bin/sh </code></pre>
+<div id="general-moab-job-scheduler-parameters." class="section level3">
+<h3>General MOAB job scheduler parameters.</h3>
+<p>Prepend the job ID assigned by the MOAB job scheduler of the log file with a reasonable name.</p>
+<pre><code>#MOAB -N r-parallel-trial</code></pre>
+<p>Request number of nodes and CPU cores per node for job. In this example, we will ask for a single node (<em>i.e.</em> <code>nodes=1</code>) with 16 cores (<em>i.e.</em> <code>ppn=8</code>).</p>
+<pre><code>#MOAB -l nodes=1:ppn=8</code></pre>
+<p>Request memory per process/core.</p>
+<pre><code>#MOAB -l pmem=1800mb</code></pre>
+<p>Specify the maximum number of time that this particular job will require in total. The format is as follows <code>dd:hh:mm:ss</code> with <code>dd=days</code>, <code>hh=hours</code>, <code>mm=minutes</code> and <code>ss=seconds</code>. The maximum number of time for a job depends on the selected <em>queue</em> (see <a href="http://www.bwhpc-c5.de/wiki/index.php/Batch_Jobs_-_bwUniCluster_Features#msub_-q_queues" class="uri">http://www.bwhpc-c5.de/wiki/index.php/Batch_Jobs_-_bwUniCluster_Features#msub_-q_queues</a> for details).</p>
+<pre><code>#MOAB -l walltime=00:00:00:20</code></pre>
+<p>Specify the job submission directory from which the job will be submitted. Please note, that this has to be the absolute path starting from the <em>root</em> directory. Ideally, you will first move to your project directory using the <code>cd</code> command and then ask for the full path via the <code>pwd</code> command.</p>
+<pre><code>#MOAB -d /pfs/work2/workspace/scratch/ho_westhues-silomais_pred2015-0/silomais_pred2015</code></pre>
+<p>Provide a name for any scheduled job based on this script. The <code>$(JOBNAME)</code> variable coincides with the name provided previously (here it was <code>#MOAB -N r-parallel-trial</code>, <em>i.e.</em> <code>r-parallel-trial</code>). The second variable <code>$(JOBID)</code> should be left as is so that you can track your job after submission.</p>
+<pre><code>#MOAB -o $(JOBNAME)_$(JOBID)</code></pre>
+<p>Specify a queue, based on your resource demands. As a rule of thumb, you will probably want to use <code>-q develop</code> for scripts you have not run before and in which case you are not sure whether they will run successfully. Additionally, most of your <em>tested code</em> will be run using a single node (<code>-q singlenode</code>) with any number of cores ranging from 1 to 16 .</p>
+<pre><code>#MOAB -q develop</code></pre>
+<p>Next you should specify if and in what cases you want be notified about the state of your scheduled jobs. There are three options, namely <code>#MOAB -m b</code> (send email when jobs begins), <code>#MOAB -m e</code> (send email when job ends) and <code>#MOAB -m a</code> (send email when jobs aborts/fails).</p>
+<pre><code>#MOAB -m bae</code></pre>
+<p>Finally, you can specify where you want to store standard output and standard errors from your jobs. Typically you want to collect both in a single file, thus specifying the following flag: <code>#MOAB -j oe</code>, where <code>o</code> denotes <em>standard output</em> and <code>e</code> denotes <em>standard error</em>, respectively.</p>
+<pre><code>#MOAB -j oe</code></pre>
+</div>
+<div id="user-specific-moab-job-scheduler-parameters." class="section level3">
+<h3>User specific MOAB job scheduler parameters.</h3>
+<p>User specific parameters will typically be picked up by your actual program, such as <code>R</code> or <code>python</code> scripts.</p>
+<div id="add-some-parameters-that-will-be-used-inside-the-r-script." class="section level4">
+<h4>Add some parameters that will be used inside the R script.</h4>
+<p><strong>Some notes</strong></p>
+<ul>
+<li>Every user-defined variable, which will be collected and used by the main program (<em>e.g.</em> an <code>R</code> script) is prepended with the <code>-v</code> flag.</li>
+<li>All user-defined variables can be overridden at the command line. Hence, the definitions of user-defined variables in any MOAB job scheduler (shell) script are merely to be regarded as default settings.</li>
+</ul>
+<p>Reduce the data in our custom R-script to <em>setosa</em>.</p>
+<pre><code>#MOAB -v SPECIES=setosa</code></pre>
+<p>Number of trials to run.</p>
+<pre><code>#MOAB -v TRIALS=10000</code></pre>
+</div>
+</div>
+</div>
+<div id="addition-of-job-specific-information." class="section level2">
+<h2>Addition of job specific information.</h2>
+<p>Subsequently, we will add some information, such as the node the job is running on and the number of cores in use, to the log file to make it more useful to us.</p>
+<pre><code>##### **********************************************************************
+########### End MOAB header ##########
+
+echo &quot;Working Directory:                    $PWD&quot;
+echo &quot;Running on host                       $HOSTNAME&quot;
+echo &quot;Job id:                               $MOAB_JOBID&quot;
+echo &quot;Job name:                             $MOAB_JOBNAME&quot;
+echo &quot;Number of nodes allocated to job:     $MOAB_NODECOUNT&quot;
+echo &quot;Number of cores allocated to job:     $MOAB_PROCCOUNT&quot;
+
+# Echo input variables
+echo &quot;Species=${SPECIES} \
+      Trials=${TRIALS}&quot; </code></pre>
+<p>Load the <code>R</code>-version that you want to use as a module.</p>
+<pre><code>module load math/R/3.2.1</code></pre>
+<div id="set-up-the-actual-call-to-the-script-that-shall-be-executed-in-batch-mode-i.e.-non-interactively." class="section level3">
+<h3>Set up the actual call to the script that shall be executed in batch mode (<em>i.e.</em> non-interactively).</h3>
+<ol style="list-style-type: decimal">
+<li>My preferred program for executing <code>R</code> scripts in batch mode is <code>Rscript</code>. Append three flags to it in order to make it run properly and without dependencies.</li>
+<li>Specify the path to the (<code>R</code>) script that you want the job scheduler to run. Please note the inital <code>./</code>, which refers to the working directory, <em>i.e.</em> the directory from which you call the MOAB job scheduler. This is equivalent to the directory that you have specified via <code>#MOAB -d /pfs/work2/workspace/scratch/ho_westhues-silomais_pred2015-0/silomais_pred2015</code>.</li>
+<li><p>Finally, provide all user-defined variables.</p>
+<pre><code>startprog=&quot;Rscript --no-save --no-restore --slave\
+       ./path/to/script/my_r_script.R\
+       ${SPECIES} ${TRIALS}&quot;</code></pre></li>
+</ol>
+</div>
+</div>
+
+<p>Matthias Westhues, 2016</p>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

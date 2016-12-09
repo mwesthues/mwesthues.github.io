@@ -1,0 +1,16 @@
+---
+title: "Miscellaneous"
+---
+
+## Plots
+-   [Human Relatedness](https://upload.wikimedia.org/wikipedia/commons/3/3f/Coefficient_of_relatedness.png)
+
+-   [Olsen Twins](https://www.flickr.com/photos/thejerk/56544292/in/photolist-5ZNDA-6rA67w-4CDDw6-4CHU49-4CHTVs-3ajUvb-4CDDqv-4VkQqm-4HX6x6-4VkB9q-4HX6qH-4CHU5w-4CHU6J-4MqZmB-4MEGUG-59ReD2-4J2kbb-4LkiHg-3af2rx-4MvaEL-9sK9Gj-aE23qP-5RcQ5f-59ReCV-v6pY-4h59L1-53oxoJ-9h8ry7-4h59PW-9ATrER-2QNCR-7LvN2h-9fqu2k-zC5eg-4vBxQK-4vTcty-4vP4rk-4Vzjwg-51Pr8d-aPjuNV-5CKY2n-dkwiFa-9Gcba4-5su3LD-dkwiuz-6XPh3w-dkwiTa-eaWenK-6SSE3Z-9ZaFV1)
+
+-   [Apple](https://www.flickr.com/photos/92098065@N06/12308338983/in/photolist-jKDsn6-ixPDdY-h75zPf-gSgQfo-dNRpuP-zuxBcU-9ttTtU-gT2CgJ-5TtfqL-r3137Z-ptNSK3-5qg1iA-auHcfK-3EUUYa-d93qSw-bKK1MT-ixLtH-ah4cz3-mZxdTB-bsfvhi-owuqtB-9X5VbW-fjR8F-ndLBRS-fNrx2X-cwsuJG-8J7grK-9sMDCr-diudRd-b4Uphx-aks3t3-doiejg-6VJ2Qe-qDVXK-9aFeQZ-coh69L-5yQTqk-7gdH9s-3otrgs-7gc9CE-e9BvmB-au5opC-psGMJA-5qSn9X-9azHuT-ar1fmY-7hSEzV-cUHDrS-aa62Yb-aCinra)
+
+-   [Orange](https://www.flickr.com/photos/michaelou-photos/12025588415/in/photolist-jjEhti-djFJP4-ruzSg-596g9a-pu9HDe-pk2JaU-4ysiwY-djxqGA-c3ZVKW-KigQ-9wtEiy-5uxQmj-6tTD58-6ivFN3-4boeuL-fMTV48-6Lmbc4-4EpdWH-pbCPW6-4kUFtR-4QwiZ7-6M7Qq-oEt8Gj-NLpDE-5CjcVP-4E5qyf-5DyVmr-7CcXvx-3UHgPP-7T15W2-7c4WRx-ay522e-nDz8ng-nGdmQ-6vbaii-2eVC6o-f3Wb2i-x7syT-7yw4ar-v1Kt4f-5ViKNd-bXuAM-4jQUrZ-mQoseA-pYayu-C6RAZo-iJz4A-rx8QEy-5QMKwz-hrv7y1)
+
+-   [Half Apple, half orange](https://www.flickr.com/photos/dmitrykolchev/1427431896/in/photolist-3b8XLL-b7kgok-cG3QA3-qc4BZg-e3ntvj-qvpLeQ-9sxGvL-8N4eJ-qWae46-9zxm9v-bzZNY6-AWLqbF-9swf8g-9nGrh9-9zqATW-68jaK2-iwemxM-qpCxjT-jBXmFQ-bpgpYA-aFcRXb-fdenQP-b7bXfa-brSgGV-ptBwHx-5G4wN6-bk6Efi-qujuhQ-eYyqdA-4CzpLZ-aDy3G2-5NZ3nc-pDWRNi-ceDE3s-dxzwiL-5PAqyZ-cCY9dQ-pC3egW-33zgcQ-hYu7X-bqKo2c-9ZQETy-pQTcHS-2ms9Wt-fB4PY-9dkVt7-edvigm-i7e9zd-9gtfF-a3auhf/)
+
+-   [Fruit Mix](https://www.flickr.com/photos/queenofthemoodswingset/6475613195/in/photolist-aSedcn-dr6pS2-b2VJRZ-sCaP4-75DBd7-6XAHf-aCzWr2-9b5RJR-9BrwG6-wtqut-osJwb1-3zuDgc-aCzXaa-5EXvb5-7ihiNZ-94sknG-aCCCeQ-bkP8NB-cLdkfA-7iEfJY-6FcHDw-c83af5-5EWFK9-5FeS1X-odoqY3-s9Jp81-rujzn1-ruw4NX-uEoDfL-vFJxJX-B8h24c-s9KLtY-u17hGe-oeGbuS-xx4s8d-tEpyk6-5FqMS9-57aZ8h-autq7g-aCzURK-8AeXG8-5VTfNq-7JGMJ2-aLJiyr-sEx3e-7iFpUp-7iA4vs-8aJZSb-d11T8C-48yb3p)

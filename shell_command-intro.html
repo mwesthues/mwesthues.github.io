@@ -11,7 +11,7 @@
 
 
 
-<title>Page A</title>
+<title>Shell Command Introduction</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,8 +19,6 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
-<link href="site_libs/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" />
 
 
 
@@ -193,6 +191,9 @@ $(document).ready(function () {
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="shell_command-intro.html">Shell Command Introduction</a>
+    </li>
     <li class="dropdown-header">Text</li>
     <li>
       <a href="find.html">Find</a>
@@ -240,6 +241,13 @@ $(document).ready(function () {
     </li>
   </ul>
 </li>
+<li>
+  <a href="bwunicluster.html">
+    <span class="fa fa-server"></span>
+     
+    bwUniCluster
+  </a>
+</li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     <span class="fa fa-gear"></span>
@@ -250,7 +258,7 @@ $(document).ready(function () {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="page_a.html">Miscellaneous</a>
+      <a href="miscellaneous.html">Miscellaneous</a>
     </li>
   </ul>
 </li>
@@ -266,12 +274,104 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Page A</h1>
+<h1 class="title toc-ignore">Shell Command Introduction</h1>
 
 </div>
 
 
-<p>This is page A.</p>
+<p>This is a brief introduction to the most used commands that you will (probably) need for navigating around the server.</p>
+<div id="get-your-current-location." class="section level3">
+<h3>Get your current location.</h3>
+<pre><code>pwd</code></pre>
+</div>
+<div id="changing-directories" class="section level3">
+<h3>Changing directories</h3>
+<pre><code># Moving to your home directory
+cd
+
+# Moving forward
+cd path/to/directory
+
+# Moving to the parent/previous directory
+cd ..</code></pre>
+</div>
+<div id="list-directory-contents" class="section level3">
+<h3>List directory contents</h3>
+<pre><code># List the content of your current directory
+ls
+
+# List the content of a child directory
+ls path/to/directory
+
+# Useful flags
+## List directory contents in long format and in a human-readable version.
+ls -lh
+
+## List also hidden files (preceded by a dot)
+ls -a</code></pre>
+</div>
+<div id="create-a-new-directory" class="section level3">
+<h3>Create a new directory</h3>
+<pre><code>mkdir &lt;dir-name&gt;</code></pre>
+</div>
+<div id="copy-content-from-a-source-to-a-destination." class="section level3">
+<h3>Copy content from a source to a destination.</h3>
+<div id="copying-on-the-same-system." class="section level4">
+<h4>Copying on the same system.</h4>
+<pre><code>cp &lt;source&gt; &lt;dest&gt;</code></pre>
+</div>
+<div id="copying-from-a-remote-system-to-a-local-system-assuming-that-you-type-this-command-from-your-local-machine." class="section level4">
+<h4>Copying from a remote system to a local system (assuming that you type this command from your local machine).</h4>
+<pre><code>scp ho_user@uc1.scc.kit.edu:/work/workspace/scratch/ho_user-foo-0/fox.txt /home/user/</code></pre>
+</div>
+<div id="copying-from-a-local-system-to-a-remote-system-again-assuming-that-you-enter-this-command-from-your-local-machine." class="section level4">
+<h4>Copying from a local system to a remote system (again, assuming that you enter this command from your local machine).</h4>
+<pre><code>scp /home/user/fox.txt scp ho_user@uc1.scc.kit.edu:/work/workspace/scratch/ho_user-foo-0/</code></pre>
+</div>
+</div>
+<div id="move-andor-rename-content." class="section level3">
+<h3>Move and/or rename content.</h3>
+<pre><code># Move a file to another directory.
+mv &lt;file&gt; path/to/directory
+
+# Rename a file.
+mv fox.txt dog.txt</code></pre>
+</div>
+<div id="remove-content." class="section level3">
+<h3>Remove content.</h3>
+<p>Please be <strong>careful with this command</strong> as purging content cannot be reversed! It is always a good idea to append the <code>rm</code> command with the <code>-i</code> (interactive, evoked for every object) or the <code>-I</code> (interactive, evoked for up to three objects) flags in order to ensure that you do not delete content unintentionally.</p>
+<pre><code># Remove a file
+rm &lt;filename&gt;
+
+# Remove an empty directory
+rmdir &lt;dir-name&gt;
+
+# Recursively remove a directory
+rm -r &lt;dir-name&gt;</code></pre>
+</div>
+<div id="display-file-output." class="section level3">
+<h3>Display file output.</h3>
+<div id="output-firstlast-lines-of-a-file." class="section level4">
+<h4>Output first/last lines of a file.</h4>
+<pre><code># Default: display the first five lines
+head &lt;file&gt;
+
+# Default: display the last five lines
+tail &lt;file&gt;
+
+# Display the first &lt;integer&gt; lines (also works with tail)
+head -n &lt;integer&gt;</code></pre>
+</div>
+<div id="show-the-entire-file" class="section level4">
+<h4>Show the entire file</h4>
+<pre><code>less &lt;file&gt;</code></pre>
+<p>The <code>less</code> command opens a file that can then be browsed by pressing <code>j</code> (downwards scrolling) or <code>k</code> (upwards scrolling).</p>
+</div>
+</div>
+<div id="open-the-manual-for-a-command." class="section level3">
+<h3>Open the manual for a command.</h3>
+<p>(Almost) every command has its own manual entry, which can be evoked by typing <code>man &lt;command&gt;</code> (<em>e.g.</em> <code>man ls</code>). The manual page can be browsed in the same manner as files opened with the <code>less</code> command described above.</p>
+</div>
 
 <p>Matthias Westhues, 2016</p>
 

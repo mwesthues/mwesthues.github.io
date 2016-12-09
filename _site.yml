@@ -16,6 +16,9 @@ navbar:
     - text: "Linux"
       icon: ion-social-tux
       menu:
+        - text: "Shell Command Introduction"
+          href: shell_command-intro.html
+        - text: "---------"
         - text: "Text"
         - text: "Find"
           href: find.html
@@ -41,11 +44,14 @@ navbar:
         - text: "Plotting"
           href: rstats_plotting.html
           icon: fa-bar-chart
+    - text: "bwUniCluster"
+      href: bwunicluster.html
+      icon: fa-server
     - text: "More"
       icon: fa-gear
       menu:
         - text: "Miscellaneous"
-          href: page_a.html
+          href: miscellaneous.html
 output:
   html_document:
     theme: readable

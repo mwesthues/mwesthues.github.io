@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>bwUniCluster</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/readable.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 66px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 71px;
+  margin-top: -71px;
+}
+
+.section h2 {
+  padding-top: 71px;
+  margin-top: -71px;
+}
+.section h3 {
+  padding-top: 71px;
+  margin-top: -71px;
+}
+.section h4 {
+  padding-top: 71px;
+  margin-top: -71px;
+}
+.section h5 {
+  padding-top: 71px;
+  margin-top: -71px;
+}
+.section h6 {
+  padding-top: 71px;
+  margin-top: -71px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Cookbook</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="ion ion-erlenmeyer-flask"></span>
+     
+    Home
+  </a>
+</li>
+<li>
+  <a href="about.html">
+    <span class="fa fa-info"></span>
+     
+    About
+  </a>
+</li>
+<li>
+  <a href="git.html">
+    <span class="fa fa-git-square"></span>
+     
+    Git
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="ion ion-social-tux"></span>
+     
+    Linux
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="shell_command-intro.html">Shell Command Introduction</a>
+    </li>
+    <li class="dropdown-header">Text</li>
+    <li>
+      <a href="find.html">Find</a>
+    </li>
+    <li>
+      <a href="rename.html">Rename</a>
+    </li>
+    <li>
+      <a href="regex.html">Regular Expressions</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">File Transfer</li>
+    <li>
+      <a href="rsync.html">rsync</a>
+    </li>
+    <li>
+      <a href="tar.html">tar</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Compiling</li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-language"></span>
+     
+    RStats
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="rstats_data-wrangling.html">
+        <span class="fa fa-puzzle-piece"></span>
+         
+        Data Wrangling
+      </a>
+    </li>
+    <li>
+      <a href="rstats_plotting.html">
+        <span class="fa fa-bar-chart"></span>
+         
+        Plotting
+      </a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="bwunicluster.html">
+    <span class="fa fa-server"></span>
+     
+    bwUniCluster
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-gear"></span>
+     
+    More
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="miscellaneous.html">Miscellaneous</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">bwUniCluster</h1>
+
+</div>
+
+
+<p>Instructions and hints for work on the bwUniCluster</p>
+<p>The basic operating system on each node of the bwUniCluster is Red Hat Enterprise Linux 6.5. If you do not have any experience with navigating on a <em>Unix</em>-like operating systems, check out this <a href="shell_command_intro.html">brief introduction to the shell</a>.</p>
+<div id="access-to-the-bwunicluster" class="section level2">
+<h2>Access to the bwUniCluster</h2>
+<div id="application-for-bwunicluster-entitlement" class="section level3">
+<h3>Application for bwUniCluster Entitlement</h3>
+<p><a href="https://kim.uni-hohenheim.de/fileadmin/einrichtungen/kim-relaunch/dateien/formulare/kim-form-bwHPC.pdf" class="uri">https://kim.uni-hohenheim.de/fileadmin/einrichtungen/kim-relaunch/dateien/formulare/kim-form-bwHPC.pdf</a></p>
+</div>
+<div id="web-registration-for-bwunicluster" class="section level3">
+<h3>Web Registration for bwUniCluster</h3>
+<p><a href="https://bwidm.scc.kit.edu/" class="uri">https://bwidm.scc.kit.edu/</a></p>
+</div>
+<div id="bwunicluster-questionnaire" class="section level3">
+<h3>bwUniCluster questionnaire</h3>
+<p><a href="https://bwhpc-c5.de/ZAS/bwunicluster_umfrage.php" class="uri">https://bwhpc-c5.de/ZAS/bwunicluster_umfrage.php</a></p>
+<p>Once you have registered as a user for the bwUniCluster you will be assigned your own username, which is your current username at the University of Hohenheim, preceded by <code>ho_</code> (<em>e.g.</em> <code>ho_user</code>). You can then access the server via <code>ssh</code> as follows:</p>
+<pre><code>ssh ho_user@scc.kit.edu</code></pre>
+</div>
+</div>
+<div id="workspaces" class="section level2">
+<h2>Workspaces</h2>
+<div id="rationale" class="section level3">
+<h3>Rationale</h3>
+<p>After registering for the bwUniCluster service, one of your first steps should be the creation of your own workspace. The reason behind this is that all of your data and files that are stored under <code>$WORK</code> are not backed up whereas files under <code>$HOME</code> are. This has important effects on the performance of the service, particularly when you make lots of use of extensive I/O operations, <em>i.e.</em> saving, reading and moving files. The suggested best practice is to store important and comparatively small files in your <code>$HOME</code> directory and your large data sets under <code>$WORK</code>.</p>
+</div>
+<div id="workspaces-and-version-control" class="section level3">
+<h3>Workspaces and version control</h3>
+<p>Another option would be to store everything under <code>$WORK</code> and to keep all your important files, such as programs, under version control. Two nice hosts for version control are <a href="https://github.com">Github</a> (particularly useful for files that you don’t mind being shared with the public) and <a href="https://bitbucket.org">Bitbucket</a> (particularly useful for private repositories that only invited participants can access). Bitbucket is especially great for users from academia since you can host an unlimited amount of private repositories and invite as many collaborators as you want without charge.</p>
+</div>
+<div id="setting-up-your-workspace" class="section level3">
+<h3>Setting up your workspace</h3>
+<p>While you’re in your home directory, create a new workspace (<em>e.g.</em> <code>foo</code>) which will be your new workspace/project-directory by typing <code>ws_allocate foo 60</code> at the command line. The number indicates the lifetime of your workspace in days (see table below for a full list of commands).</p>
+<table>
+<thead>
+<tr class="header">
+<th>Command</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>ws_allocate foo 60</code></td>
+<td>Allocate a workspace named <code>foo</code> for 60 days (maximum)</td>
+</tr>
+<tr class="even">
+<td><code>ws_list -a</code></td>
+<td>List all your workspaces</td>
+</tr>
+<tr class="odd">
+<td><code>ws_find foo</code></td>
+<td>Get absolute path of workspace <code>foo</code></td>
+</tr>
+<tr class="even">
+<td><code>ws_extend foo</code></td>
+<td>Extend lifetime of your workspace <code>foo</code> by 5 days from now.</td>
+</tr>
+<tr class="odd">
+<td><code>ws_release foo</code></td>
+<td>Manually erase your workspace <code>foo</code>.</td>
+</tr>
+<tr class="even">
+<td><code>ws_allocate -h</code></td>
+<td>Help on workspace commands.</td>
+</tr>
+<tr class="odd">
+<td><code>lfs quota -u $(whoami)$WORK</code></td>
+<td>find out your disk usage of <code>$WORK</code></td>
+</tr>
+</tbody>
+</table>
+<p>Each time you log on to the server, you can easily switch to your workspace <code>foo</code> by typing `<code>cd</code>ws_find foo``` at the command line.</p>
+<p>The <strong>maximum lifetime</strong> of a workspace is <strong>60 days</strong> with the possibility of <strong>three extensions</strong>, resulting in a cumulative maximum lifetime of 240 days for a workspace.</p>
+<p>Fore more information visit <a href="http://www.bwhpc-c5.de/wiki/index.php/BwUniCluster_Hardware_and_Architecture#File_Systems" class="uri">http://www.bwhpc-c5.de/wiki/index.php/BwUniCluster_Hardware_and_Architecture#File_Systems</a></p>
+</div>
+</div>
+<div id="mounting-remote-file-systems" class="section level2">
+<h2>Mounting Remote File Systems</h2>
+<p>Mounting remote file systems on the local system can alleviate some of the problems you may find when moving files between the bwUniCluster and your local hard drive. For <em>Unix</em> like systems, this procedure is quite easy and can be achieved via the following steps <strong>from your local machine</strong>:</p>
+<pre><code># Create a local directory in your home directory to mount the remote file system.
+mkdir ~/bwUniCluster
+
+# Mount your workspace to the newly generated local mount point. I will assume that your institution
+# is the University of Hohenheim, that your actual username is simply &#39;user&#39; and that you have called
+# your workspace &#39;foo&#39;.
+sshfs ho_user@uc1.scc.kit.edu:/work/workspace/scratch/ho_user-foo-0 ~/bwUniCluster</code></pre>
+<p>After mounting the remote client on your local machine, you can simply move files via a GUI, just as you would move files on your local machine.</p>
+<p>For Windows users there seems to be a similar option: <a href="https://www.digitalocean.com/community/tutorials/how-to-use-sshfs-to-mount-remote-file-systems-over-ssh" class="uri">https://www.digitalocean.com/community/tutorials/how-to-use-sshfs-to-mount-remote-file-systems-over-ssh</a></p>
+</div>
+<div id="running-a-batch-job-via-a-job-file." class="section level2">
+<h2>Running a batch job (via a job file).</h2>
+<p>Running a batch job on the bwUniCluster requires two components:</p>
+<ol style="list-style-type: decimal">
+<li>A job script (<em>i.e.</em> a shell script), which will be used and interpreted by the MOAB job scheduler on the servers.</li>
+<li>A program script, which contains the actual code that shall be executed. This program will be evoked through the job script.</li>
+</ol>
+<p>You can find a step-by-step instruction for such a job script <a href="bwunicluster_moab-scheduler-example.html">here</a>, the pure <code>.sh</code> script content <a href="bwunicluster_mclapply.sh">here</a> and an exemplary <a href="bwunicluster_mclapply.R">R script</a>, which can be called through the aforementioned shell script.</p>
+</div>
+<div id="running-a-batch-job-from-the-command-line." class="section level2">
+<h2>Running a batch job (from the command line).</h2>
+<p>Any job can also be started directly from the command line using the same commands introduced in the previous section on running batch jobs via job files. However, this is much more tedious and causes considerably more clutter and headaches for users than the former. Nevertheless, a useful situation for running batch jobs from the command line is a case where you use a job file as your template and override some of the parameters interactively. Let’s assume that you are working with the <a href="bwunicluster_mclapply.sh">following job script</a> - which was introduced in the previous section - and that you want to run the same analyses for different ‘Species’. Instead of changing the content of this job file every time you want to alter one of its user-defined input variables, you can simply overwrite them at the command line. Line 14 in our job file has the following content:</p>
+<pre><code>#MOAB -v SPECIES=setosa</code></pre>
+<p>Now, if we wanted to run the same analysis for the species ‘versicolor’, you could simply type:</p>
+<pre><code>msub -v SPECIES=versicolor ./path/to/bwunicluster_mclapply.sh</code></pre>
+<p>If you want to alter multiple user-defined parameters at once, you simply separate them via <code>,</code> characters:</p>
+<pre><code>msub -v SPECIES=versicolor,TRIALS=5000 ./path/to/bwunicluster_mclapply.sh</code></pre>
+<p>Of course it is also possible to change any other argument that can be passed to the <code>msub</code> command, such as <code>-l walltime=</code>.</p>
+</div>
+<div id="running-an-interactive-job" class="section level2">
+<h2>Running an interactive job</h2>
+<p>There are multiple situtations where you might want to run an interactive session on the bwUniCluster instead of batch jobs. For example, one of your batch jobs has encountered an error and you want to check what went wrong by browsing through your script and running tests interactively on the server. Or you have output that you want to use for a follow-up analysis that does not fit into the memory of your local machine. For an interactive session, you would typically type the following command: The following command could be used if your code encountered an error and (from the log file) you have a good guess of what could have gone wrong and how to fix it:</p>
+<pre><code>msub -I -V -X -l walltime=00:00:15:00,mem=4gb,nodes=1:ppn=1 -q develop
+
+# command to run a job (batch or interactivley) on the server
+msub
+
+# Declare the job to be run interactively.
+-I
+
+#  Export all environment variables to the job.
+-V
+
+#  Defines the resources that are required by the job.
+-l
+
+## Define the amount of time that the job requires for its execution.
+-l walltime=dd:hh:mm:ss
+
+## Define the amount of memory that you job will require in total.
+-l mem=[0-9]&lt;unit&gt;
+
+## Specify the number of nodes and processes per node, respectively.
+-l nodes=1:ppn=1
+
+#  Defines the destination queue (develop, singlenode, multinode, verylong,
+#  fat)
+-q develop</code></pre>
+<p>Note, that for an interactive session you do not call a job script (with a ‘.sh’ suffix).</p>
+</div>
+<div id="checkchange-status-of-your-jobs" class="section level2">
+<h2>Check/change status of your jobs</h2>
+<table>
+<colgroup>
+<col width="28%" />
+<col width="71%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Command</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>showq</code></td>
+<td>All <strong>your</strong> active, eligible or blocked jobs.</td>
+</tr>
+<tr class="even">
+<td><code>showstart &lt;job-ID</code></td>
+<td>Get information about estimated start time.</td>
+</tr>
+<tr class="odd">
+<td><code>showstart&lt;procs&gt;@&lt;seconds&gt;</code></td>
+<td>Display estimated start time for job requiring <br> <code>&lt;procs&gt;</code> cores for <code>&lt;seconds&gt;</code>.</td>
+</tr>
+<tr class="even">
+<td><code>showbf</code></td>
+<td>Get information about available resources.</td>
+</tr>
+<tr class="odd">
+<td><code>checkjob &lt;job-ID&gt;</code></td>
+<td>Get detailed information on your job.</td>
+</tr>
+<tr class="even">
+<td><code>showq -c</code></td>
+<td>Display completed jobs.</td>
+</tr>
+<tr class="odd">
+<td><code>mjobctl -c &lt;job-ID&gt;</code></td>
+<td>Abort a job.</td>
+</tr>
+</tbody>
+</table>
+<p>For more information visit <a href="http://www.bwhpc-c5.de/wiki/index.php/Batch_Jobs" class="uri">http://www.bwhpc-c5.de/wiki/index.php/Batch_Jobs</a>.</p>
+</div>
+<div id="software-modules" class="section level2">
+<h2>Software modules</h2>
+<p>In order for your programs to be executed, you will need to load software modules first. For example, if you want to run an <code>R</code> program you will have to load it into the shell environment first by running <code>module load /math/R</code>, first. For several modules there are multiple versions available. Run <code>module avail</code> to check, which software is available. If you schedule your jobs via a job script you will have to write the <code>module load &lt;category&gt;/&lt;software_name&gt;/&lt;version&gt;</code> command into the <a href="bwunicluster_mclapply.sh">shell script</a>.</p>
+</div>
+<div id="gnu-parallel" class="section level2">
+<h2>GNU parallel</h2>
+<p>GNU parallel can be used to parallelize single commands or scripts. It can help you with your daily working activties by speeding up routine tasks such as compressing, finding or downloading files. GNU parallel is also usefull if you want to run an e.g. one R script multiple times with changing input variables. Examples for such a task are the parallelization of the cross-validation for model validation in a genomic prediction framework or the parallelization of an association study by running e.g. one script for each chromsome. If you want to know more about it follow the Reader’s guide provided by the authors:</p>
+<div id="readers-guide" class="section level3">
+<h3>Reader’s guide</h3>
+<ol style="list-style-type: decimal">
+<li>Start by watching the intro videos for a quick <a href="http://www.youtube.com/playlist?list=PL284C9FF2488BC6D1">introduction</a>.</li>
+<li>Then look at the <a href="https://www.gnu.org/software/parallel/man.html">examples</a> after the list of OPTIONS. That will give you an idea of what GNU parallel is capable of.</li>
+<li>Then spend an hour walking through the <a href="https://www.gnu.org/software/parallel/parallel_tutorial.html">tutorial</a>. Your command line will love you for it.</li>
+<li>Finally you may want to look at the rest of this manual if you have special needs not already covered. If you want to know the design decisions behind GNU parallel, try: man parallel_design. This is also a good intro if you intend to change GNU parallel.</li>
+</ol>
+</div>
+</div>
+
+<p>Matthias Westhues, 2016</p>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
