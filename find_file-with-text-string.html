@@ -19,6 +19,7 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
 <link href="site_libs/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" />
 
@@ -180,7 +181,6 @@ $(document).ready(function () {
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
-<script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
@@ -349,7 +349,7 @@ $(document).ready(function () {
 grep --include=\*.{R,r} -Rnw <span class="st">&#39;/path/to/directory/&#39;</span> -e <span class="st">&quot;string&quot;</span>
 
 <span class="co"># Alternative (could be parallelized):</span>
-find . -type f --regex <span class="st">&#39;.*\(R\|r\)$&#39;</span> |<span class="st"> </span>xargs grep -Rnw -e <span class="st">&quot;string&quot;</span>
+find . -type f -regex <span class="st">&#39;.*\(R\|r\)$&#39;</span> |<span class="st"> </span>xargs grep -Rnw -e <span class="st">&quot;string&quot;</span>
 
 <span class="co"># Only display the names of files that contain the string.</span>
 grep --include=\*.{R,r} -Rwl <span class="st">&#39;/path/to/directory/&#39;</span> -e <span class="st">&quot;string&quot;</span></code></pre></div>
@@ -366,8 +366,11 @@ grep --include=\*.{R,r} -Rwl <span class="st">&#39;/path/to/directory/&#39;</spa
 <script>
 
 // add bootstrap table styles to pandoc tables
-$(document).ready(function () {
+function bootstrapStylePandocTables() {
   $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
 });
 
 

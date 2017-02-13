@@ -8,7 +8,7 @@ Search for 'string' inside '/path/to/directory', but only consider files that ei
 grep --include=\*.{R,r} -Rnw '/path/to/directory/' -e "string"
 
 # Alternative (could be parallelized):
-find . -type f --regex '.*\(R\|r\)$' | xargs grep -Rnw -e "string"
+find . -type f -regex '.*\(R\|r\)$' | xargs grep -Rnw -e "string"
 
 # Only display the names of files that contain the string.
 grep --include=\*.{R,r} -Rwl '/path/to/directory/' -e "string"
