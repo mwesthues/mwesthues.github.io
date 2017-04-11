@@ -25,7 +25,7 @@ git push -u origin dev
 
 
 ### Delete feature branch on remote
-You want [delete](http://stackoverflow.com/a/2003515/2323832) the feature 
+You want to [delete](http://stackoverflow.com/a/2003515/2323832) the feature 
 branch `dev` on the remote:
 ```
 git push origin --delete dev
