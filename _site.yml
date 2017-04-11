@@ -23,6 +23,8 @@ navbar:
           href: git_branches.html
         - text: "3-Way-Merge"
           href: git_three-way-merge.html
+        - text: "Github"
+          href: git_github.html
     - text: "Linux"
       icon: ion-social-tux
       menu:
