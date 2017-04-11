@@ -306,6 +306,23 @@ $(document).ready(function () {
 git fetch origin
 git rebase origin/master</code></pre>
 </div>
+<div id="track-local-feature-branch" class="section level3">
+<h3>Track local feature branch</h3>
+<p>If you already have a local feature branch <code>dev</code>, you first check it out:</p>
+<pre><code>git checkout dev</code></pre>
+<p>Next, you want to push the <code>dev</code> branch to the remote:</p>
+<pre><code>git push -u origin dev</code></pre>
+<p><a href="http://stackoverflow.com/a/29847192/2323832">Source</a></p>
+</div>
+<div id="delete-feature-branch-on-remote" class="section level3">
+<h3>Delete feature branch on remote</h3>
+<p>You want <a href="http://stackoverflow.com/a/2003515/2323832">delete</a> the feature branch <code>dev</code> on the remote:</p>
+<pre><code>git push origin --delete dev</code></pre>
+<p>Propagate this on other machines using:</p>
+<pre><code>git fetch --all --prune</code></pre>
+<p>Then, delete its local counterpart:</p>
+<pre><code>git branch -d dev</code></pre>
+</div>
 <div id="synchronization-between-local-and-remote-feature-branches." class="section level3">
 <h3>Synchronization between local and remote feature branches.</h3>
 <p>The goal is to fetch changes from the remote and then push the changes from the local feature branch to the remote feature branch without affecting the remote master branch. <a href="http://stackoverflow.com/q/820178/2323832" class="uri">http://stackoverflow.com/q/820178/2323832</a></p>
