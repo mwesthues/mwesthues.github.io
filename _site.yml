@@ -56,6 +56,9 @@ navbar:
         - text: "Plotting"
           href: rstats_plotting.html
           icon: fa-bar-chart
+        - text: "---------"
+        - text: "Combining Plots"
+          href: rstats_plotting_combined.html
     - text: "bwUniCluster"
       href: bwunicluster.html
       icon: fa-server

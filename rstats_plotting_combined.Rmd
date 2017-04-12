@@ -1,0 +1,76 @@
+---
+title: "Combine Plots"
+author: "Matthias Westhues"
+date: "April 12, 2017"
+output:
+  html_document:
+    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load_gh("tidyverse/dplyr")
+pacman::p_load("ggplot2", "cowplot", "grid", "gridBase", "purrr")
+```
+
+
+## ggplot2 facets
+We want to plot the same type (e.g. a scatterplot) but for multiple facets of
+the data. 
+This can easily be done using either `facet_wrap` or `facet_grid` in `ggplot2`.
+```{r ggplot2}
+data(mtcars)
+car_scatter <- mtcars %>% 
+  ggplot(aes(x = disp, y = mpg)) +
+  geom_point() +
+  facet_grid(. ~ cyl, scales = "free") +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    panel.spacing.x = unit(2, "lines")
+  )
+car_scatter
+```
+
+## ggplot2 of different type
+We are interested in looking different aspects of the data, using various plot
+types, but displaying them all in a single plot.
+The `cowplot` package can be used for this when all plots are created using
+the `ggplot2` package.
+```{r cowplot}
+# Create a new regression plot.
+car_reg <- mtcars %>% 
+  ggplot(aes(x = disp, y = mpg)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  theme_grey(base_size = 8)
+
+# Create a new bar plot.
+convert_to_factor <- compose(as.character, as.factor)
+car_boxplots <- mtcars %>% 
+  ggplot(aes(x = cyl %>% convert_to_factor(), y = hp)) +
+  geom_boxplot() +
+  theme_grey(base_size = 8) +
+  xlab("# Cylinders") +
+  ylab("Horsepower")
+
+# Combine the previous plots.
+bottom_row <- plot_grid(
+  car_reg, car_boxplots,
+  labels = c("B", "C"),
+  align = "h",
+  rel_widths = c(1, 1)
+)
+
+plot_grid(
+  car_scatter,
+  bottom_row,
+  labels = c("A", ""),
+  ncol = 1,
+  rel_heights = c(2, 1)
+)
+
+```
+
+
+
